@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.pierre.test.speedrun.speedrun.R;
@@ -14,6 +15,7 @@ import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.GameListP
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class GameListActivity extends BaseActivity implements IGameListActivity {
 
@@ -22,6 +24,9 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
 
     @BindView(R.id.game_list_activity_progress_bar)
     ProgressBar mLoader;
+
+    @BindView(R.id.game_list_activity_retry_button)
+    Button mRetryButton;
 
     private GameListPresenter mPresenter;
 
@@ -73,5 +78,16 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     public void showContent(Data data) {
         GameAdapter adapter = new GameAdapter(data.games);
         mGamesRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showError(boolean show) {
+        int visibility = show ? View.VISIBLE : View.GONE;
+        mRetryButton.setVisibility(visibility);
+    }
+
+    @OnClick(R.id.game_list_activity_retry_button)
+    public void onRetryClicked() {
+        mPresenter.retryClicked();
     }
 }

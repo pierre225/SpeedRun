@@ -30,6 +30,11 @@ public class GameListPresenter extends BasePresenter<IGameListActivity> {
         loadGames();
     }
 
+    public void retryClicked() {
+        mView.showError(false);
+        loadGames();
+    }
+
     public void loadGames() {
         mView.showLoader(true);
         Disposable disposable = SpeedRunService.getGames()
@@ -43,6 +48,7 @@ public class GameListPresenter extends BasePresenter<IGameListActivity> {
                         throwable ->
                         {
                             mView.showLoader(false);
+                            mView.showError(true);
                             throwable.printStackTrace();
                         }
                 );

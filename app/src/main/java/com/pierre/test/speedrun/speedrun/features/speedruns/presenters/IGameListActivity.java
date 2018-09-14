@@ -9,6 +9,7 @@ public interface IGameListActivity extends IView {
 
     void showLoader(boolean show);
     void showContent(Data data);
+    void showError(boolean show);
 
     class Data {
         public List<ModelGame> games;
