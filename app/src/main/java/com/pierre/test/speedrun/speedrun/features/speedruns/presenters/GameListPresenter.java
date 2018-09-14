@@ -1,7 +1,5 @@
 package com.pierre.test.speedrun.speedrun.features.speedruns.presenters;
 
-import android.util.Log;
-
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
 import com.pierre.test.speedrun.speedrun.services.SpeedRunService;
 
@@ -27,6 +25,7 @@ public class GameListPresenter extends BasePresenter<IGameListActivity> {
     public void onViewCreated() {
         super.onViewCreated();
 
+        // first load of game when launching the activity
         loadGames();
     }
 

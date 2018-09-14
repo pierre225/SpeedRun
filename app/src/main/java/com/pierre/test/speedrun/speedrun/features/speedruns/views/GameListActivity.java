@@ -30,6 +30,8 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
 
     private GameListPresenter mPresenter;
 
+    // -- Region Lifecycle --
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,10 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
         mPresenter.onViewDestroyed();
     }
 
+    // -- End Region Lifecycle --
+
+    // -- Region Contract methods --
+
     @Override
     public void showLoader(boolean show) {
         int visibility = show ? View.VISIBLE : View.GONE;
@@ -86,8 +92,14 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
         mRetryButton.setVisibility(visibility);
     }
 
+    // -- End Region Contract methods --
+
+    // -- Region User input --
+
     @OnClick(R.id.game_list_activity_retry_button)
     public void onRetryClicked() {
         mPresenter.retryClicked();
     }
+
+    // -- End Region User input --
 }
