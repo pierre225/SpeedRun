@@ -82,6 +82,7 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
     @Override
     public void showContent(Data data) {
         if (data != null) {
+            // Set the runtime
             mRunTime.setText(getString(R.string.speed_run_activity_run_time, data.speedRun.getTimes().getTime()));
 
             // Set the name or id of the first player

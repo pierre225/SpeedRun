@@ -19,14 +19,10 @@ public class RestClient {
      * return SpeedRunApi
      */
     public static SpeedRunApi getSpeedRunApi() {
-        if (mClient == null) {
-            mClient = createClient();
-        }
-        if (mRetrofit == null) {
-            mRetrofit = createRetrofit(mClient);
-        }
-        SpeedRunApi api = mRetrofit.create(SpeedRunApi.class);
+        // Initialize Retrofit and client
+        getRetrofit(getClient());
 
+        SpeedRunApi api = mRetrofit.create(SpeedRunApi.class);
         return api;
     }
 
@@ -35,11 +31,12 @@ public class RestClient {
      *
      * return OkHttpClient
      */
-    private static OkHttpClient createClient() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        OkHttpClient client = builder.build();
-
-        return client;
+    private static OkHttpClient getClient() {
+        if (mClient == null) {
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            mClient = builder.build();
+        }
+        return mClient;
     }
 
     /**
@@ -47,14 +44,17 @@ public class RestClient {
      *
      * return Retrofit
      */
-    private static Retrofit createRetrofit(OkHttpClient client) {
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client);
+    private static Retrofit getRetrofit(OkHttpClient client) {
+        if (mRetrofit == null) {
+            Retrofit.Builder builder = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(client);
+            mRetrofit = builder.build();
+        }
 
-        return builder.build();
+        return mRetrofit;
     }
 
 
