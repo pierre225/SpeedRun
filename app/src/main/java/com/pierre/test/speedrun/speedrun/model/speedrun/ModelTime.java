@@ -6,4 +6,8 @@ public class ModelTime {
 
     @SerializedName("realtime_t")
     private Integer time;
+
+    public Integer getTime() {
+        return time;
+    }
 }

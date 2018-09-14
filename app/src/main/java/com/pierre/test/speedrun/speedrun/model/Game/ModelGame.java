@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
 public class ModelGame implements Parcelable {
 
     @SerializedName("id")
@@ -18,14 +16,22 @@ public class ModelGame implements Parcelable {
     @SerializedName("assets")
     private ModelGameAssets assets;
 
-    public ModelGame(String id, ModelGameNames names, ModelGameAssets assets) {
-        this.id = id;
-        this.names = names;
-        this.assets = assets;
+    public String getId() {
+        return id;
+    }
+
+    public ModelGameNames getNames() {
+        return names;
+    }
+
+    public ModelGameAssets getAssets() {
+        return assets;
     }
 
     protected ModelGame(Parcel in) {
         id = in.readString();
+        names = in.readParcelable(ModelGameNames.class.getClassLoader());
+        assets = in.readParcelable(ModelGameAssets.class.getClassLoader());
     }
 
     public static final Creator<ModelGame> CREATOR = new Creator<ModelGame>() {
@@ -40,18 +46,6 @@ public class ModelGame implements Parcelable {
         }
     };
 
-    public String getId() {
-        return id;
-    }
-
-    public ModelGameNames getNames() {
-        return names;
-    }
-
-    public ModelGameAssets getAssets() {
-        return assets;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -60,5 +54,7 @@ public class ModelGame implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
+        parcel.writeParcelable(names, i);
+        parcel.writeParcelable(assets, i);
     }
 }
