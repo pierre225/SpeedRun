@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ModelGameAssets implements Parcelable{
 
-    @SerializedName("cover-tiny")
+    @SerializedName("cover-medium")
     private ModelGameAssetsCover cover;
 
     public ModelGameAssetsCover getCover() {

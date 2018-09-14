@@ -40,14 +40,15 @@ public class SpeedRunPresenter extends BasePresenter<ISpeedRunActivity> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(speedRuns -> {
-                    mView.showLoader(false);
-                    // We only want to show the first speed run
-                    mData.speedRun = speedRuns.get(0);
-                    mView.showContent(mData);
-                },
+                            mView.showLoader(false);
+                            // We only want to show the first speed run
+                            mData.speedRun = speedRuns.get(0);
+                            mView.showContent(mData);
+                        },
                         throwable -> {
-                    mView.showLoader(false);
-                    throwable.printStackTrace();
+                            mView.showLoader(false);
+                            mView.showError(true);
+                            throwable.printStackTrace();
                         });
         mDisposables.add(disposable);
     }
@@ -58,5 +59,10 @@ public class SpeedRunPresenter extends BasePresenter<ISpeedRunActivity> {
             Intent videoIntent = IntentHelper.getVideoIntent(uri);
             context.startActivity(videoIntent);
         }
+    }
+
+    public void retryClicked() {
+        mView.showError(false);
+        loadSpeedruns(mGame.getId());
     }
 }

@@ -41,6 +41,9 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
     @BindView(R.id.speed_run_activity_loader)
     ProgressBar mLoader;
 
+    @BindView(R.id.speed_run_activity_retry_button)
+    Button mRetryButton;
+
     public static final String MODEL_GAME = "MODEL_GAME";
 
     private SpeedRunPresenter mPresenter;
@@ -79,12 +82,12 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
     @Override
     public void showContent(Data data) {
         if (data != null) {
-            mRunTime.setText(String.valueOf(data.speedRun.getTimes().getTime()));
+            mRunTime.setText(getString(R.string.speed_run_activity_run_time, data.speedRun.getTimes().getTime()));
 
             // Set the name or id of the first player
             String name = data.speedRun.getPlayers().get(0).getName();
             String nameOrId = name != null ? name : data.speedRun.getPlayers().get(0).getId();
-            mUserName.setText(nameOrId);
+            mUserName.setText(getString(R.string.speed_run_activity_user_name_label, nameOrId));
         }
     }
 
@@ -96,7 +99,8 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
 
     @Override
     public void showError(boolean show) {
-
+        int visibility = show ? View.VISIBLE : View.GONE;
+        mRetryButton.setVisibility(visibility);
     }
 
     // -- End Region Contract methods --
@@ -106,6 +110,11 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
     @OnClick(R.id.speed_run_activity_video_button)
     public void onVideoClicked() {
         mPresenter.videoClicked(this);
+    }
+
+    @OnClick(R.id.speed_run_activity_retry_button)
+    public void onRetryClicked() {
+        mPresenter.retryClicked();
     }
 
     // -- End Region User interface --

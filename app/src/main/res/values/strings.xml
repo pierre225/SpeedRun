@@ -3,6 +3,11 @@
 
     <!-- Game List Activity -->
     <string name="game_list_activity_retry_button_label">Retry</string>
+
+    <!-- Speed Run Activity -->
+    <string name="speed_run_activity_retry_button_label">Retry</string>
     <string name="speed_run_activity_button_label">See video</string>
+    <string name="speed_run_activity_user_name_label">user name or id : %1$s</string>
+    <string name="speed_run_activity_run_time">Run time : %1$d s</string>
 
 </resources>
