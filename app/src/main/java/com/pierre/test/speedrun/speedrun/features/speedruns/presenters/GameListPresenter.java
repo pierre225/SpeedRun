@@ -23,12 +23,16 @@ public class GameListPresenter extends BasePresenter<IGameListActivity> {
     }
 
     public void loadGames() {
+        mView.showLoader(true);
         Disposable disposable = SpeedRunService.getGames()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(games ->
-                                Log.d("testtest", games.toString()),
-                                throwable -> throwable.printStackTrace()
+                .subscribe(games -> mView.showLoader(false),
+                        throwable ->
+                        {
+                            mView.showLoader(false);
+                            throwable.printStackTrace();
+                        }
                 );
         mDisposables.add(disposable);
     }

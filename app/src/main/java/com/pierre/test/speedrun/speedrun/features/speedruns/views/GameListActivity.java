@@ -1,13 +1,26 @@
 package com.pierre.test.speedrun.speedrun.features.speedruns.views;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.pierre.test.speedrun.speedrun.R;
 import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
 import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.IGameListActivity;
 import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.GameListPresenter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class GameListActivity extends BaseActivity implements IGameListActivity {
+
+    @BindView(R.id.game_list_activity_recycler_view)
+    private RecyclerView mGamesRecyclerView;
+
+    @BindView(R.id.game_list_activity_progress_bar)
+    private ProgressBar mLoader;
 
     private GameListPresenter mPresenter;
 
@@ -16,8 +29,16 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
 
+        // Init views
+        ButterKnife.bind(this);
+
         // Init presenter
         mPresenter = new GameListPresenter(this);
+
+        // Recycler view
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mGamesRecyclerView.setLayoutManager(layoutManager);
+        mGamesRecyclerView.setHasFixedSize(true);
 
         mPresenter.onViewCreated();
     }
@@ -38,5 +59,11 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.onViewDestroyed();
+    }
+
+    @Override
+    public void showLoader(boolean show) {
+        int visibility = show ? View.VISIBLE : View.GONE;
+        mLoader.setVisibility(visibility);
     }
 }

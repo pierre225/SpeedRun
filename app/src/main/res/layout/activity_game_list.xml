@@ -8,6 +8,7 @@
     tools:context=".features.speedruns.views.GameListActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/game_list_activity_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Hello World!"
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/speed_run_li"
+        android:id="@+id/game_list_activity_progress_bar"
         android:layout_width="@dimen/progress_bar_size"
         android:layout_height="@dimen/progress_bar_size"
         app:layout_constraintBottom_toBottomOf="parent"
