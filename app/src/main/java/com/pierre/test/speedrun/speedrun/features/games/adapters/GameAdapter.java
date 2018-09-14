@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pierre.test.speedrun.speedrun.R;
+import com.pierre.test.speedrun.speedrun.features.games.presenters.IGameListActivity;
 import com.pierre.test.speedrun.speedrun.model.game.ModelGame;
 import com.squareup.picasso.Picasso;
 
@@ -18,8 +19,11 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     private List<ModelGame> mGames;
 
-    public GameAdapter(List<ModelGame> mGames) {
+    private IGameListActivity mListener;
+
+    public GameAdapter(List<ModelGame> mGames, IGameListActivity listener) {
         this.mGames = mGames;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -40,6 +44,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         Picasso.get()
                 .load(game.getAssets().getCover().getUri())
                 .into(gameViewHolder.mCover);
+
+        // When the item is clicked, send the game clicked to the parent view
+        gameViewHolder.itemView.setOnClickListener(v -> mListener.gameSelected(game.getId()));
     }
 
     @Override

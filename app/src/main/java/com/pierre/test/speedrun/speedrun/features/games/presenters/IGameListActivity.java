@@ -11,6 +11,7 @@ public interface IGameListActivity extends IView {
     void showLoader(boolean show);
     void showContent(Data data);
     void showError(boolean show);
+    void gameSelected(String gameSelectedId);
 
     // -- Region Contract data --
     class Data {

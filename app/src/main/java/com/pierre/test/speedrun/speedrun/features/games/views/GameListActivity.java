@@ -1,5 +1,6 @@
 package com.pierre.test.speedrun.speedrun.features.games.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
 import com.pierre.test.speedrun.speedrun.features.games.adapters.GameAdapter;
 import com.pierre.test.speedrun.speedrun.features.games.presenters.IGameListActivity;
 import com.pierre.test.speedrun.speedrun.features.games.presenters.GameListPresenter;
+import com.pierre.test.speedrun.speedrun.features.speedrun.views.SpeedRunActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,7 +84,7 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
 
     @Override
     public void showContent(Data data) {
-        GameAdapter adapter = new GameAdapter(data.games);
+        GameAdapter adapter = new GameAdapter(data.games, this);
         mGamesRecyclerView.setAdapter(adapter);
     }
 
@@ -90,6 +92,12 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     public void showError(boolean show) {
         int visibility = show ? View.VISIBLE : View.GONE;
         mRetryButton.setVisibility(visibility);
+    }
+
+    @Override
+    public void gameSelected(String gameSelectedId) {
+        Intent intent = SpeedRunActivity.newIntent(this, gameSelectedId);
+        startActivity(intent);
     }
 
     // -- End Region Contract methods --
