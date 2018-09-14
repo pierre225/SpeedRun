@@ -3,6 +3,7 @@ package com.pierre.test.speedrun.speedrun.features.speedruns.presenters;
 import android.util.Log;
 
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
+import com.pierre.test.speedrun.speedrun.services.SpeedRunService;
 
 public class SpeedRunListPresenter extends BasePresenter<ISpeedRunListActivity> {
 
@@ -14,6 +15,11 @@ public class SpeedRunListPresenter extends BasePresenter<ISpeedRunListActivity> 
     public void onViewCreated() {
         super.onViewCreated();
 
-        Log.d("testtest", "presenter initialized");
+
+    }
+
+    public void loadGames() {
+        SpeedRunService.getGames()
+                .subscribe();
     }
 }
