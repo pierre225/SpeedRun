@@ -1,8 +1,11 @@
 package com.pierre.test.speedrun.speedrun.features.speedrun.presenter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
+import com.pierre.test.speedrun.speedrun.helpers.IntentHelper;
 import com.pierre.test.speedrun.speedrun.model.game.ModelGame;
 import com.pierre.test.speedrun.speedrun.services.SpeedRunService;
 
@@ -47,5 +50,13 @@ public class SpeedRunPresenter extends BasePresenter<ISpeedRunActivity> {
                     throwable.printStackTrace();
                         });
         mDisposables.add(disposable);
+    }
+
+    public void videoClicked(Context context) {
+        if (mData.speedRun != null && mData.speedRun.getVideo().getLinks().get(0).getUri() != null) {
+            String uri = mData.speedRun.getVideo().getLinks().get(0).getUri();
+            Intent videoIntent = IntentHelper.getVideoIntent(uri);
+            context.startActivity(videoIntent);
+        }
     }
 }

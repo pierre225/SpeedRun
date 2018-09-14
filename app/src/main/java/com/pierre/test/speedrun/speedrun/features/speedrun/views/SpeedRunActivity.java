@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity {
 
@@ -50,6 +51,8 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
         return intent;
     }
 
+    // -- Region Lifecycle --
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +71,10 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
 
         mPresenter.onViewCreated();
     }
+
+    // -- End Region Lifecycle --
+
+    // -- Region Contract methods --
 
     @Override
     public void showContent(Data data) {
@@ -91,4 +98,15 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
     public void showError(boolean show) {
 
     }
+
+    // -- End Region Contract methods --
+
+    // -- Region User interface --
+
+    @OnClick(R.id.speed_run_activity_video_button)
+    public void onVideoClicked() {
+        mPresenter.videoClicked(this);
+    }
+
+    // -- End Region User interface --
 }

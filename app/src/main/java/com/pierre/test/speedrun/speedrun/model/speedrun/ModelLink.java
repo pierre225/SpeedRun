@@ -6,4 +6,8 @@ public class ModelLink {
 
     @SerializedName("uri")
     private String uri;
+
+    public String getUri() {
+        return uri;
+    }
 }

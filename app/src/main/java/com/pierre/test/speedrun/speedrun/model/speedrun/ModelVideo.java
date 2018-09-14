@@ -8,4 +8,8 @@ public class ModelVideo {
 
     @SerializedName("links")
     private List<ModelLink> links;
+
+    public List<ModelLink> getLinks() {
+        return links;
+    }
 }
