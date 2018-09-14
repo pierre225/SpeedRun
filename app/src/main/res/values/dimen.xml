@@ -4,4 +4,9 @@
     <!-- Common -->
     <dimen name="progress_bar_size">50dp</dimen>
 
+    <!-- Game item -->
+    <dimen name="game_item_cover_size">80dp</dimen>
+    <dimen name="game_item_name_text_size">15sp</dimen>
+    <dimen name="game_item_name_text_margin">10dp</dimen>
+
 </resources>

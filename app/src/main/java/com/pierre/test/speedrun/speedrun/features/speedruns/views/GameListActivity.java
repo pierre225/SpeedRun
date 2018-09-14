@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.pierre.test.speedrun.speedrun.R;
 import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
+import com.pierre.test.speedrun.speedrun.features.speedruns.adapters.GameAdapter;
 import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.IGameListActivity;
 import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.GameListPresenter;
 
@@ -17,10 +18,10 @@ import butterknife.ButterKnife;
 public class GameListActivity extends BaseActivity implements IGameListActivity {
 
     @BindView(R.id.game_list_activity_recycler_view)
-    private RecyclerView mGamesRecyclerView;
+    RecyclerView mGamesRecyclerView;
 
     @BindView(R.id.game_list_activity_progress_bar)
-    private ProgressBar mLoader;
+    ProgressBar mLoader;
 
     private GameListPresenter mPresenter;
 
@@ -28,6 +29,7 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
+        getSupportActionBar().hide();
 
         // Init views
         ButterKnife.bind(this);
@@ -65,5 +67,11 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     public void showLoader(boolean show) {
         int visibility = show ? View.VISIBLE : View.GONE;
         mLoader.setVisibility(visibility);
+    }
+
+    @Override
+    public void showContent(Data data) {
+        GameAdapter adapter = new GameAdapter(data.games);
+        mGamesRecyclerView.setAdapter(adapter);
     }
 }
