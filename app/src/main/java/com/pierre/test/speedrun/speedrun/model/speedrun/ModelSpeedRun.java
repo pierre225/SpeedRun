@@ -12,4 +12,7 @@ public class ModelSpeedRun {
 
     @SerializedName("videos")
     private ModelVideo video;
+
+    @SerializedName("times")
+    private ModelTime times;
 }
