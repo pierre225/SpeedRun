@@ -1,4 +1,4 @@
-package com.pierre.test.speedrun.speedrun.features.speedruns.presenters;
+package com.pierre.test.speedrun.speedrun.features.games.presenters;
 
 import com.pierre.test.speedrun.speedrun.features.common.IView;
 import com.pierre.test.speedrun.speedrun.model.game.ModelGame;

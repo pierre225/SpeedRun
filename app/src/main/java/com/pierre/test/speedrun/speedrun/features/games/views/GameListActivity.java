@@ -1,4 +1,4 @@
-package com.pierre.test.speedrun.speedrun.features.speedruns.views;
+package com.pierre.test.speedrun.speedrun.features.games.views;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,9 +9,9 @@ import android.widget.ProgressBar;
 
 import com.pierre.test.speedrun.speedrun.R;
 import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
-import com.pierre.test.speedrun.speedrun.features.speedruns.adapters.GameAdapter;
-import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.IGameListActivity;
-import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.GameListPresenter;
+import com.pierre.test.speedrun.speedrun.features.games.adapters.GameAdapter;
+import com.pierre.test.speedrun.speedrun.features.games.presenters.IGameListActivity;
+import com.pierre.test.speedrun.speedrun.features.games.presenters.GameListPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

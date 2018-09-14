@@ -1,4 +1,4 @@
-package com.pierre.test.speedrun.speedrun.features.speedruns.presenters;
+package com.pierre.test.speedrun.speedrun.features.games.presenters;
 
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
 import com.pierre.test.speedrun.speedrun.services.SpeedRunService;

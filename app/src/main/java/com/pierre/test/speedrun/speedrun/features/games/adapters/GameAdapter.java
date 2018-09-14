@@ -1,4 +1,4 @@
-package com.pierre.test.speedrun.speedrun.features.speedruns.adapters;
+package com.pierre.test.speedrun.speedrun.features.games.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
