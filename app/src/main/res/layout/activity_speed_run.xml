@@ -11,39 +11,49 @@
         android:id="@+id/speed_run_activity_loader"
         android:layout_width="@dimen/progress_bar_size"
         android:layout_height="@dimen/progress_bar_size"
+        android:layout_margin="@dimen/small_space"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/speed_run_activity_game_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_space"
         android:textColor="@android:color/black"
+        android:textSize="@dimen/speed_run_activity_text_view_size"
         tools:text="Game name" />
 
     <ImageView
         android:id="@+id/speed_run_activity_game_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_space" />
 
     <TextView
         android:id="@+id/speed_run_activity_run_time"
         android:layout_width="wrap_content"
+        android:textSize="@dimen/speed_run_activity_text_view_size"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_space"
         android:textColor="@android:color/black"
         tools:text="Game Run time" />
-
-    <Button
-        android:id="@+id/speed_run_activity_video_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        tools:text="Video" />
 
     <TextView
         android:id="@+id/speed_run_activity_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/speed_run_activity_text_view_size"
+        android:layout_margin="@dimen/small_space"
         android:textColor="@android:color/black"
         tools:text="User Name" />
+
+    <Button
+        android:id="@+id/speed_run_activity_video_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_space"
+        android:textColor="@android:color/black"
+        android:text="@string/speed_run_activity_button_label"
+        tools:text="Video" />
 
 </LinearLayout>

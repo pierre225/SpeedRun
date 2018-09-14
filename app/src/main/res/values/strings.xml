@@ -3,5 +3,6 @@
 
     <!-- Game List Activity -->
     <string name="game_list_activity_retry_button_label">Retry</string>
+    <string name="speed_run_activity_button_label">See video</string>
 
 </resources>

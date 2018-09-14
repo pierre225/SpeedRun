@@ -3,10 +3,14 @@
 
     <!-- Common -->
     <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="small_space">10dp</dimen>
 
     <!-- Game item -->
     <dimen name="game_item_cover_size">80dp</dimen>
     <dimen name="game_item_name_text_size">15sp</dimen>
     <dimen name="game_item_name_text_margin">10dp</dimen>
+
+    <!-- Speedrun view -->
+    <dimen name="speed_run_activity_text_view_size">20sp</dimen>
 
 </resources>
