@@ -4,20 +4,20 @@ import android.os.Bundle;
 
 import com.pierre.test.speedrun.speedrun.R;
 import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
-import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.ISpeedRunListActivity;
-import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.SpeedRunListPresenter;
+import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.IGameListActivity;
+import com.pierre.test.speedrun.speedrun.features.speedruns.presenters.GameListPresenter;
 
-public class SpeedRunListActivity extends BaseActivity implements ISpeedRunListActivity {
+public class GameListActivity extends BaseActivity implements IGameListActivity {
 
-    private SpeedRunListPresenter mPresenter;
+    private GameListPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speed_run_list);
+        setContentView(R.layout.activity_game_list);
 
         // Init presenter
-        mPresenter = new SpeedRunListPresenter(this);
+        mPresenter = new GameListPresenter(this);
 
         mPresenter.onViewCreated();
     }

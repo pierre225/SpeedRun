@@ -9,9 +9,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class SpeedRunListPresenter extends BasePresenter<ISpeedRunListActivity> {
+public class GameListPresenter extends BasePresenter<IGameListActivity> {
 
-    public SpeedRunListPresenter(ISpeedRunListActivity mView) {
+    public GameListPresenter(IGameListActivity mView) {
         super(mView);
     }
 
