@@ -27,10 +27,11 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed_run);
 
-        // Init presenter
-        mPresenter = new SpeedRunPresenter(this);
-
         String speedRunId = getIntent().getStringExtra(SPEED_RUN_ID);
+
+        // Init presenter
+        mPresenter = new SpeedRunPresenter(this, speedRunId);
+
 
         mPresenter.onViewCreated();
     }
