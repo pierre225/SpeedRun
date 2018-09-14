@@ -1,9 +1,9 @@
 package com.pierre.test.speedrun.speedrun.features.speedruns.presenters;
 
-import android.util.Log;
-
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
 import com.pierre.test.speedrun.speedrun.services.SpeedRunService;
+
+import io.reactivex.disposables.Disposable;
 
 public class SpeedRunListPresenter extends BasePresenter<ISpeedRunListActivity> {
 
@@ -15,11 +15,12 @@ public class SpeedRunListPresenter extends BasePresenter<ISpeedRunListActivity> 
     public void onViewCreated() {
         super.onViewCreated();
 
-
+        loadGames();
     }
 
     public void loadGames() {
-        SpeedRunService.getGames()
+        Disposable disposable = SpeedRunService.getGames()
                 .subscribe();
+        mDisposables.add(disposable);
     }
 }
