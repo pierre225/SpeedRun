@@ -46,7 +46,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
                 .into(gameViewHolder.mCover);
 
         // When the item is clicked, send the game clicked to the parent view
-        gameViewHolder.itemView.setOnClickListener(v -> mListener.gameSelected(game.getId()));
+        gameViewHolder.itemView.setOnClickListener(v -> mListener.gameSelected(game));
     }
 
     @Override

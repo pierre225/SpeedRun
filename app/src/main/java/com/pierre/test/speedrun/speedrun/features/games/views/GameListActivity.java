@@ -14,6 +14,7 @@ import com.pierre.test.speedrun.speedrun.features.games.adapters.GameAdapter;
 import com.pierre.test.speedrun.speedrun.features.games.presenters.IGameListActivity;
 import com.pierre.test.speedrun.speedrun.features.games.presenters.GameListPresenter;
 import com.pierre.test.speedrun.speedrun.features.speedrun.views.SpeedRunActivity;
+import com.pierre.test.speedrun.speedrun.model.game.ModelGame;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,8 +96,8 @@ public class GameListActivity extends BaseActivity implements IGameListActivity 
     }
 
     @Override
-    public void gameSelected(String gameSelectedId) {
-        Intent intent = SpeedRunActivity.newIntent(this, gameSelectedId);
+    public void gameSelected(ModelGame gameSelected) {
+        Intent intent = SpeedRunActivity.newIntent(this, gameSelected);
         startActivity(intent);
     }
 

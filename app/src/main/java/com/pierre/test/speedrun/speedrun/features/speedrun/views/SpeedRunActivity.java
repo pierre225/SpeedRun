@@ -9,16 +9,17 @@ import com.pierre.test.speedrun.speedrun.R;
 import com.pierre.test.speedrun.speedrun.features.common.BaseActivity;
 import com.pierre.test.speedrun.speedrun.features.speedrun.presenter.ISpeedRunActivity;
 import com.pierre.test.speedrun.speedrun.features.speedrun.presenter.SpeedRunPresenter;
+import com.pierre.test.speedrun.speedrun.model.game.ModelGame;
 
 public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity {
 
-    public static final String SPEED_RUN_ID = "SPEED_RUN_ID";
+    public static final String MODEL_GAME = "MODEL_GAME";
 
     private SpeedRunPresenter mPresenter;
 
-    public static Intent newIntent(Activity activity, String speedRunId) {
+    public static Intent newIntent(Activity activity, ModelGame game) {
         Intent intent = new Intent(activity, SpeedRunActivity.class);
-        intent.putExtra(SPEED_RUN_ID, speedRunId);
+        intent.putExtra(MODEL_GAME, game);
         return intent;
     }
 
@@ -27,10 +28,10 @@ public class SpeedRunActivity extends BaseActivity implements ISpeedRunActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed_run);
 
-        String speedRunId = getIntent().getStringExtra(SPEED_RUN_ID);
+        ModelGame game = (ModelGame) getIntent().getParcelableExtra(MODEL_GAME);
 
         // Init presenter
-        mPresenter = new SpeedRunPresenter(this, speedRunId);
+        mPresenter = new SpeedRunPresenter(this, game);
 
 
         mPresenter.onViewCreated();

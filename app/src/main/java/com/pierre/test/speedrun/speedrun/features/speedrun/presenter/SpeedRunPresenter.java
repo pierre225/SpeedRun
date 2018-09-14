@@ -3,6 +3,7 @@ package com.pierre.test.speedrun.speedrun.features.speedrun.presenter;
 import android.util.Log;
 
 import com.pierre.test.speedrun.speedrun.features.common.BasePresenter;
+import com.pierre.test.speedrun.speedrun.model.game.ModelGame;
 import com.pierre.test.speedrun.speedrun.services.SpeedRunService;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -12,11 +13,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SpeedRunPresenter extends BasePresenter<ISpeedRunActivity> {
 
-    private String mGameId;
+    private ModelGame mGame;
 
-    public SpeedRunPresenter(ISpeedRunActivity mView, String gameId) {
+    public SpeedRunPresenter(ISpeedRunActivity mView, ModelGame game) {
         super(mView);
-        this.mGameId = gameId;
+        this.mGame = game;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class SpeedRunPresenter extends BasePresenter<ISpeedRunActivity> {
         super.onViewCreated();
 
         // Load speedRun
-        loadSpeedruns(mGameId);
+        loadSpeedruns(mGame.getId());
     }
 
     private void loadSpeedruns(@NonNull String gameId) {
