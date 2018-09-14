@@ -1,4 +1,4 @@
-package com.pierre.test.speedrun.speedrun.model.Game;
+package com.pierre.test.speedrun.speedrun.model.game;
 
 import com.google.gson.annotations.SerializedName;
 
